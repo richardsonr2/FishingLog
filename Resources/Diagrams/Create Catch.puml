@@ -1,0 +1,14 @@
+Fishing Log Sequence Diagram Create Catch
+
+@startuml
+
+actor Client
+Client -> lambda : sends request to create catch
+lambda -> CreateCatchRequest : sends request to be built
+CreateCatchRequest -> CreateCatchResult : sends request to get a result
+lambda <- CreateCatchResult : returns the result of catch creating
+lambda -> CreateCatchActiviy : sends the creation to be created
+CreateCatchActiviy -> CatchDao : sends Catch to be saved in the database
+lambda <- CreateCatchActiviy : returns the created Catch
+Client <- lambda : returns the created catch
+@enduml
